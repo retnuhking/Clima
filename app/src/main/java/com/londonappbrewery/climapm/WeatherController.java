@@ -92,6 +92,7 @@ public class WeatherController extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(WeatherController.this, SettingsController.class);
+                myIntent.putExtra("WindToggle", isWindInfoVisible);
                 startActivity(myIntent);
             }
         });

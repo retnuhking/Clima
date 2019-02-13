@@ -17,9 +17,21 @@ public class SettingsController extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
+
+        Intent myIntent = getIntent();
+        Boolean currentToggleState = myIntent.getBooleanExtra("WindToggle", false);
+
         ImageButton backButton = findViewById(R.id.settingsBackButton);
         Switch windToggle = findViewById(R.id.windTS);
         final TextView mWindSpeedTV = findViewById(R.id.windSpeedTV);
+
+        //Ensures that the toggle is in the state that reflects the current state
+        //when the settings page is loaded
+        if (currentToggleState) {
+            windToggle.setChecked(true);
+        } else {
+            windToggle.setChecked(false);
+        }
 
         final Intent toggleIntent = new Intent(SettingsController.this, WeatherController.class);
 
